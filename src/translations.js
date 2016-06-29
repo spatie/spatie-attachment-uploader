@@ -2,15 +2,15 @@ import { includes, keys } from './helpers';
 
 const translations = {
     nl: {
-        add: 'Voeg een bijlage toe (max. :size\Mb)',
+        add: 'Voeg een bijlage toe (max. :size Mb)',
         error: 'Er is iets misgegaan',
     },
     fr: {
-        add: 'Ajouter une pièce jointe (max. :size\Mo)',
+        add: 'Ajouter une pièce jointe (max. :size Mo)',
         error: 'Quelque chose a mal tourné',
     },
     en: {
-        add: 'Add an attachment (max. :size\Mb)',
+        add: 'Add an attachment (max. :size Mb)',
         error: 'Something went wrong',
     },
 };
