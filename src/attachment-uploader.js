@@ -1,3 +1,4 @@
+import $ from 'jquery';
 import { component } from 'dom-component-parser';
 import Dropzone from 'dropzone';
 import { getIconForFile } from './helpers';
@@ -19,14 +20,14 @@ const init = () => {
 
 export const createUploader = (node, options) => {
 
-    node.innerHTML = `
+    $(node).html(`
         <div class="fallback">
-            <input type="file" name="${options.name}">
+            <input type="file" name="${options.name}[]">
         </div>
         <div class="dz-message" data-dz-message>
             <span>${translate('add', { size: options.maxFilesize })}</span>
         </div>
-    `;
+    `);
 
     const dropzone = new Dropzone(node, {
 
@@ -40,26 +41,31 @@ export const createUploader = (node, options) => {
         dictFileTooBig: translate('error.tooBig', { size: options.maxFilesize }),
     });
 
+    const $export = $('<div></div>').appendTo(node);
+
     dropzone.on('addedfile', function (file) {
 
-        const previewImage = file.previewElement.getElementsByClassName('dz-image')[0];
+        const $previewImage = $(file.previewElement).find('.dz-image');
 
-        if (!previewImage) return;
+        $previewImage.html(`
+            <span class="dz-file-thumb">
+                <i class="icon-${getIconForFile(file.name)}" aria-hidden="true"></i>
+            </span>
+        `);
 
-        previewImage.innerHTML = `<span class="dz-file-thumb">
-            <i class="icon-${getIconForFile(file.name)}" aria-hidden="true"></i>
-        </span>`;
+        $export.append(`<input type=text value=${1}`);
 
-        const removeButton = Dropzone.createElement(`<span class="dz-remove">
-            <i class="icon-cancel"></i>
-        </span>`);
+        const $removeButton = $(`
+            <span class="dz-remove">
+                <i class="icon-cancel"></i>
+            </span>
+        `).appendTo(file.previewElement);
 
-        removeButton.addEventListener('click', e => {
+        $removeButton.on('click', e => {
             e.preventDefault();
             dropzone.removeFile(file);
+            $export.find(`[value=${1}]`).remove();
         });
-
-        file.previewElement.appendChild(removeButton);
     });
 
     return dropzone;
