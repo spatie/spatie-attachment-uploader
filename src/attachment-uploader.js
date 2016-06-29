@@ -46,15 +46,13 @@ export const createUploader = (node, options) => {
 
         if (!previewImage) return;
 
-        previewImage.innerHTML = `
-            <span class="dz-file-thumb">
-                <i class="icon-${getIconForFile(file.name)}" aria-hidden="true"></i>
-            </span>
-        `;
+        previewImage.innerHTML = `<span class="dz-file-thumb">
+            <i class="icon-${getIconForFile(file.name)}" aria-hidden="true"></i>
+        </span>`;
 
-        const removeButton = Dropzone.createElement(`
-            <span class="dz-remove"><i class="icon-cancel"></i></span>
-        `);
+        const removeButton = Dropzone.createElement(`<span class="dz-remove">
+            <i class="icon-cancel"></i>
+        </span>`);
 
         removeButton.addEventListener('click', e => {
             e.preventDefault();
