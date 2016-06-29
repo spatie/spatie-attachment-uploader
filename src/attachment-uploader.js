@@ -37,7 +37,7 @@ export const createUploader = (node, options) => {
         parallelUploads: options.parallelUploads,
 
         dictResponseError: translate('error.generic'),
-        dictFileTooBig: translate('errors.tooBig', { size: options.maxFilesize }),
+        dictFileTooBig: translate('error.tooBig', { size: options.maxFilesize }),
     });
 
     dropzone.on('addedfile', function (file) {
