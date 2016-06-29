@@ -43,7 +43,7 @@ export const createUploader = (node, options) => {
 
     const $export = $('<div></div>').appendTo(node);
 
-    dropzone.on('addedfile', function (file) {
+    dropzone.on('addedfile', file => {
 
         const $previewImage = $(file.previewElement).find('.dz-image');
 
@@ -53,7 +53,7 @@ export const createUploader = (node, options) => {
             </span>
         `);
 
-        $export.append(`<input type=text value=${1}`);
+        $export.append($(`<input name="${options.name}" type="hidden" value="${1}">`));
 
         const $removeButton = $(`
             <span class="dz-remove">
@@ -64,7 +64,7 @@ export const createUploader = (node, options) => {
         $removeButton.on('click', e => {
             e.preventDefault();
             dropzone.removeFile(file);
-            $export.find(`[value=${1}]`).remove();
+            $export.find(`[value="${1}"]`).remove();
         });
     });
 
