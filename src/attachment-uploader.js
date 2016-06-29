@@ -53,8 +53,6 @@ export const createUploader = (node, options) => {
             </span>
         `);
 
-        $export.append($(`<input name="${options.name}[]" type="hidden" value="${1}">`));
-
         const $removeButton = $(`
             <span class="dz-remove">
                 <i class="icon-cancel"></i>
@@ -64,8 +62,13 @@ export const createUploader = (node, options) => {
         $removeButton.on('click', e => {
             e.preventDefault();
             dropzone.removeFile(file);
-            $export.find(`[value="${1}"]`).remove();
+            $export.find(`[value="${file.mediaId}"]`).remove();
         });
+    });
+
+    dropzone.on('success', (file, response) => {
+        file.mediaId = response.id;
+        $export.append($(`<input name="${options.name}[]" type="hidden" value="${response.id}">`));
     });
 
     return dropzone;
