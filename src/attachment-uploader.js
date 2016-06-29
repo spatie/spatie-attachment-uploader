@@ -24,7 +24,7 @@ export const createUploader = (node, options) => {
             <input type="file" name="${options.name}">
         </div>
         <div class="dz-message" data-dz-message>
-            <span>${translate('add')}</span>
+            <span>${translate('add', { size: options.maxFilesize })}</span>
         </div>
     `;
 
@@ -36,8 +36,8 @@ export const createUploader = (node, options) => {
         maxFilesize: options.maxFilesize,
         parallelUploads: options.parallelUploads,
 
-        dictResponseError: translate('error'),
-        dictFileTooBig: translate('tooBig', { size: options.maxFilesize }),
+        dictResponseError: translate('error.generic'),
+        dictFileTooBig: translate('errors.tooBig', { size: options.maxFilesize }),
     });
 
     dropzone.on('addedfile', function (file) {

@@ -2,16 +2,19 @@ import { includes, keys } from './helpers';
 
 const translations = {
     nl: {
-        add: 'Voeg een bijlage toe (max. :size Mb)',
-        error: 'Er is iets misgegaan',
+        'add': 'Voeg een bijlage toe (max. :size Mb)',
+        'error.generic': 'Er is iets misgegaan',
+        'error.tooBig': 'Het bestand is te groot (max. :size Mb)',
     },
     fr: {
-        add: 'Ajouter une pièce jointe (max. :size Mo)',
-        error: 'Quelque chose a mal tourné',
+        'add': 'Ajouter une pièce jointe (max. :size Mo)',
+        'error.generic': 'Quelque chose a mal tourné',
+        'error.tooBig': 'Le fichier est trop grand (max. :size Mo)',
     },
     en: {
-        add: 'Add an attachment (max. :size Mb)',
-        error: 'Something went wrong',
+        'add': 'Add an attachment (max. :size Mb)',
+        'error.generic': 'Something went wrong',
+        'error.tooBig': 'The file is too large (max. :size Mb)',
     },
 };
 
