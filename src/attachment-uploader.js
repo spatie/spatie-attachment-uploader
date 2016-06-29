@@ -53,7 +53,7 @@ export const createUploader = (node, options) => {
             </span>
         `);
 
-        $export.append($(`<input name="${options.name}" type="hidden" value="${1}">`));
+        $export.append($(`<input name="${options.name}[]" type="hidden" value="${1}">`));
 
         const $removeButton = $(`
             <span class="dz-remove">
