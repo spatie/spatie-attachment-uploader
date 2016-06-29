@@ -52,12 +52,16 @@ export const createUploader = (node, options) => {
             </span>
         `;
 
-        file.previewElement.appendChild(Dropzone.createElement(`
+        const removeButton = Dropzone.createElement(`
             <span class="dz-remove"><i class="icon-cancel"></i></span>
-        `).addEventListener('click', e => {
+        `);
+
+        removeButton.addEventListener('click', e => {
             e.preventDefault();
             dropzone.removeFile(file);
-        }));
+        });
+
+        file.previewElement.appendChild(removeButton);
     });
 
     return dropzone;
