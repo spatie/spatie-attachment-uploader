@@ -2,7 +2,6 @@
 
 [![Latest Version on NPM](https://img.shields.io/npm/v/spatie-attachment-uploader.svg?style=flat-square)](https://npmjs.com/package/spatie-attachment-uploader)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
-[![Build Status](https://img.shields.io/travis/spatie-custom/spatie-attachment-uploader/master.svg?style=flat-square)](https://travis-ci.org/spatie-custom/spatie-attachment-uploader)
 
 ```js
 import attachmentUploader from 'spatie-attachment-uploader';
@@ -18,6 +17,15 @@ attachmentUploader.init();
     data-multiple
 ></div>
 ```
+
+Available options:
+
+- `name`
+- `url`
+- `multiple`
+- `max-files`
+- `max-filesize`
+- `parallel-uploads`
 
 Spatie is a webdesign agency based in Antwerp, Belgium. You'll find an overview of all our open source projects [on our website](https://spatie.be/opensource).
 
@@ -53,6 +61,18 @@ attachmentUploader.init();
     data-multiple
 ></div>
 ```
+
+If you want to manually register uploader, you can use the `createUploader` function:
+
+```js
+import { createUploader } from 'spatie-attachment-uploader';
+
+createUploader(element, options);
+```
+
+### Options
+
+Options get passed down to Dropzone. Their [docs](http://www.dropzonejs.com/#configuration) have a full reference.
 
 ## Change log
 
