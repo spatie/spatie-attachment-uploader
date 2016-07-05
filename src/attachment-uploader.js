@@ -15,12 +15,12 @@ const init = () => {
         maxFilesize: 10,
         parallelUploads: 10,
 
-    }).map(({ node, options }) => createUploader(node, options));
+    }).map(({ element, options }) => createUploader(element, options));
 };
 
-export const createUploader = (node, options) => {
+export const createUploader = (element, options) => {
 
-    $(node).html(`
+    $(element).html(`
         <div class="fallback">
             <input type="file" name="${options.name}[]">
         </div>
@@ -29,7 +29,7 @@ export const createUploader = (node, options) => {
         </div>
     `);
 
-    const dropzone = new Dropzone(node, {
+    const dropzone = new Dropzone(element, {
 
         url: options.url,
         uploadMultiple: options.multiple,
@@ -41,7 +41,7 @@ export const createUploader = (node, options) => {
         dictFileTooBig: translate('error.tooBig', { size: options.maxFilesize }),
     });
 
-    const $export = $('<div></div>').appendTo(node);
+    const $export = $('<div></div>').appendTo(element);
 
     dropzone.on('addedfile', file => {
 
