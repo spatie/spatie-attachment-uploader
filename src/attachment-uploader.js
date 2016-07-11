@@ -49,13 +49,13 @@ export const createUploader = (element, options) => {
 
         $previewImage.html(`
             <span class="dz-file-thumb">
-                <i class="icon-${getIconForFile(file.name)}" aria-hidden="true"></i>
+                ${getIconForFile(file.name)}
             </span>
         `);
 
         const $removeButton = $(`
             <span class="dz-remove">
-                <i class="icon-cancel"></i>
+                <i class="fa fa-times"></i>
             </span>
         `).appendTo(file.previewElement);
 
