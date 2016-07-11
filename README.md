@@ -103,7 +103,7 @@ When handling the form response, remember to remove the deleted media that was p
 ```php
 $attachments = collect($request->get('attachments'));
 
-$this->getMedia('attachments')->reject(function (Media $media) use ($attachments) {
+$model->getMedia('attachments')->reject(function (Media $media) use ($attachments) {
     return $attachments->contains($media->id);
 })->each(function (Media $media) {
     $media->delete();
