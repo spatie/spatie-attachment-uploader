@@ -74,6 +74,42 @@ createUploader(element, options);
 
 Options get passed down to Dropzone. Their [docs](http://www.dropzonejs.com/#configuration) have a full reference.
 
+### Server setup
+
+```php
+public function uploadAttachment()
+{
+    try {
+
+        // Get your `$model`...
+
+        $file = request()->file('file');
+
+        if (!$model) throw new Exception('No model in session');
+        if (!$file) throw new Exception('No file in the request');
+
+        $media = $model->addMedia($file)->toCollection('attachments');
+
+        return response()->json(['id' => $media->id], Response::HTTP_OK);
+
+    } catch (Exception $e) {
+        return response(null, Response::HTTP_INTERNAL_SERVER_ERROR);
+    }
+}
+```
+
+When handling the form response, remember to remove the deleted media that was previously uploaded:
+
+```php
+$attachments = collect($request->get('attachments'));
+
+$this->getMedia('attachments')->reject(function (Media $media) use ($attachments) {
+    return $attachments->contains($media->id);
+})->each(function (Media $media) {
+    $media->delete();
+});
+```
+
 ## Change log
 
 Please see [CHANGELOG](CHANGELOG.md) for more information what has changed recently.
