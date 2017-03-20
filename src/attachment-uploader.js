@@ -37,6 +37,13 @@ export const createUploader = (element, options) => {
         maxFilesize: options.maxFilesize,
         parallelUploads: options.parallelUploads,
 
+        fallback() {
+            // No mercy for the deprecated
+            element.style.display = 'none';
+
+            throw new Error('Dropzone not supported by this browser');
+        },
+
         dictResponseError: translate('error.generic'),
         dictFileTooBig: translate('error.tooBig', { size: options.maxFilesize }),
     });
