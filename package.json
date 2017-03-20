@@ -1,6 +1,6 @@
 {
-  "name": "spatie-attachment-uploader",
-  "version": "1.0.1",
+  "name": "@spatie/attachment-uploader",
+  "version": "1.0.2",
   "description": "Dropzone upload component for forms",
   "main": "dist/index.js",
   "jsnext:main": "src/index.js",
