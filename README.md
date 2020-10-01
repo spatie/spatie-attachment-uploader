@@ -1,6 +1,6 @@
 # spatie-attachment-uploader
 
-[![Latest Version on NPM](https://img.shields.io/npm/v/spatie-attachment-uploader.svg?style=flat-square)](https://npmjs.com/package/spatie-attachment-uploader)
+[![Latest Version on NPM](https://img.shields.io/npm/v/@spatie/attachment-uploader.svg?style=flat-square)](https://www.npmjs.com/package/@spatie/attachment-uploader)
 [![Software License](https://img.shields.io/badge/license-MIT-brightgreen.svg?style=flat-square)](LICENSE.md)
 
 ```js
